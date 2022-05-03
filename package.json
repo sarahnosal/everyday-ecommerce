@@ -18,6 +18,8 @@
   "homepage": "https://github.com/sarahnosal/everyday-ecommerce#readme",
   "dependencies": {
     "express": "^4.18.0",
-    "pg": "^8.7.3"
+    "passport-local": "^1.0.0",
+    "pg": "^8.7.3",
+    "swagger-ui-express": "^4.3.0"
   }
 }
