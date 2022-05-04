@@ -1,5 +1,5 @@
 const { database } = require('pg/lib/defaults');
-const db = require('../database');
+const db = require('../db');
 const pgp = require('pg-promise')({ capSQL: true });
 
 module.exports = class UserModel {
