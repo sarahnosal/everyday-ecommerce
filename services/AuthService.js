@@ -4,39 +4,52 @@ const UserModelInstance = new UserModel();
 
 module.exports = class AuthService {
 
-    async register(data) {
-        const { email } = data;
+  async register(data) {
 
-        try {
+    const { email } = data;
 
-            const user = await UserModelInstance.findOneByEmail(email);
+    try {
+      // Check if user already exists
+      const user = await UserModelInstance.findOneByEmail(email);
 
-            if (user) {
-                throw createError(409, 'Email already in use');
-            }
+      // If user already exists, reject
+      if (user) {
+        throw createError(409, 'Email already in use');
+      }
 
-            return await UserModelInstance.create(data)
-        } catch(err) {
-            throw createError(500, err);
-        }
-    };
+      // User doesn't exist, create new user record
+      return await UserModelInstance.create(data);
 
-    async login(data) {
-        const { email, password } = data;
-
-        try {
-            const user = await UserModelInstance.findOneByEmail(email);
-            if(!user) {
-                throw createError(401, 'Incorrect usermame or password');
-            }
-
-            if (user.password !== password) {
-                throw createError(401, 'Incorrect username or password');
-            }
-
-            return user;
-        } catch(err) {
-            throw createError(500, err);
-        }
+    } catch(err) {
+      throw createError(500, err);
     }
+
+  };
+
+  async login(data) {
+
+    const { email, password } = data;
+
+    try {
+      // Check if user exists
+      const user = await UserModelInstance.findOneByEmail(email);
+
+      // If no user found, reject
+      if (!user) {
+        throw createError(401, 'Incorrect username or password');
+      }
+
+      // Check for matching passwords
+      if (user.password !== password) {
+        throw createError(401, 'Incorrect username or password');
+      }
+
+      return user;
+
+    } catch(err) {
+      throw createError(500, err);
+    }
+
+  };
+
 }
