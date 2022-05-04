@@ -1,7 +1,7 @@
 swagger: "2.0"
 
 info:
-  description: "Everyday Ecommerce REST API"
+  description: "Everyday e-commerce REST API"
   version: "1.0.0"
   title: "Everyday E-commerce REST API"
 
