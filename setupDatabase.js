@@ -76,7 +76,6 @@ const { DB } = require('./config');
       user: DB.PGUSER,
       host: DB.PGHOST,
       database: DB.PGDATABASE,
-      password: DB.PGPASSWORD,
       port: DB.PGPORT
     });
 
