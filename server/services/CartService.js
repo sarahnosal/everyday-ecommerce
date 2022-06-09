@@ -3,6 +3,8 @@ const CartModel = require('../models/cart');
 const OrderModel = require('../models/order');
 const CartItemModel = require('../models/cartItem');
 
+const { STRIPE_SECRET_KEY } = require('../config');
+
 module.exports = class CartService {
 
   async create(data) {

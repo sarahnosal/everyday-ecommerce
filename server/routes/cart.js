@@ -6,7 +6,7 @@ const CartServiceInstance = new CartService();
 
 module.exports = (app, passport) => {
 
-  app.use('/carts', router);
+  app.use('/api/carts', router);
 
   router.get('/mine', async (req, res, next) => {
     try {
@@ -85,7 +85,6 @@ module.exports = (app, passport) => {
   router.post('/mine/checkout', async (req, res, next) => {
     try {
       const { id } = req.user;
-
       const { cartId, paymentInfo } = req.body; 
 
       const response = await CartServiceInstance.checkout(cartId, id, paymentInfo);

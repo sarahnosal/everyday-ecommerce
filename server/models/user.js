@@ -111,4 +111,60 @@ module.exports = class UserModel {
       throw new Error(err);
     }
   }
+
+  /**
+   * Finds a user record by Google ID
+   * @param  {String}      id [Google ID]
+   * @return {Object|null}    [User Record]
+   */
+  async findOneByGoogleId(id) {
+    try {
+
+      // Generate SQL statement
+      const statement = `SELECT *
+                         FROM users
+                         WHERE google ->> 'id' = $1`;
+      const values = [id];
+  
+      // Execute SQL statment
+      const result = await db.query(statement, values);
+
+      if (result.rows?.length) {
+        return result.rows[0]
+      }
+  
+      return null;
+
+    } catch(err) {
+      throw new Error(err);
+    }
+  }
+
+  /**
+   * Finds a user record by Facebook ID
+   * @param  {String}      id [Facebook ID]
+   * @return {Object|null}    [User Record]
+   */
+  async findOneByFacebookId(id) {
+    try {
+
+      // Generate SQL statement
+      const statement = `SELECT *
+                         FROM users
+                         WHERE facebook ->> 'id' = $1`;
+      const values = [id];
+  
+      // Execute SQL statment
+      const result = await db.query(statement, values);
+
+      if (result.rows?.length) {
+        return result.rows[0]
+      }
+  
+      return null;
+
+    } catch(err) {
+      throw new Error(err);
+    }
+  }
 }
