@@ -1,16 +1,20 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import SearchIcon from '@mui/icons-material/Search';
+import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 function Header(){
 
 
     return (
         <div className='header'>
-            <Link to='/account'>Account Icon</Link>
+            <Link to='/account'><AccountCircleIcon/></Link>
             <h1>EVERYDAY ECOMMERCE</h1>
-            <span>Search bar</span>
-            <span>Cart Icon</span>
-            <span>Favorites Icon</span>
+            <span><SearchIcon /></span>
+            <span><ShoppingBagIcon /></span>
+            <span><FavoriteBorderIcon /></span>
             <nav className='NavBarItems'>
                 <ul className='nav-menu'>
                     <Link id='new' to='/new'>What's New</Link>
