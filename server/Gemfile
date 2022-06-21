@@ -82,3 +82,4 @@ group :test do
 end
 
 gem 'draper'
+gem 'rails-controller-testing'

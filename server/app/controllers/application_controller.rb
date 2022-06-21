@@ -1,6 +1,12 @@
 class ApplicationController < ActionController::Base
 
     helper_method :resource, :collection
+
+    rescue_from ActiveRecord::RecordNotFound do |exception|
+        @exception = exception
+ 
+        render :exception
+    end
     
     def new
         initialize_resource
