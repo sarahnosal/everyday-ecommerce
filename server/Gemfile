@@ -73,6 +73,8 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'faker'
+  gem 'rubocop-faker'
 end
 
 group :test do
@@ -83,3 +85,5 @@ end
 
 gem 'draper'
 gem 'rails-controller-testing'
+gem 'kaminari'
+gem 'pg_search'
