@@ -1,4 +1,4 @@
-class Product < ApplicationRecord
+class Product < ActiveRecord::Base
   include PgSearch
 
   pg_search_scope :search,

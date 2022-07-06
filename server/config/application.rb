@@ -20,3 +20,9 @@ module Server
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end
+
+module Shop
+  class Application < Rails::Application
+    config.eager_load_paths << config.root.join('lib').to_s
+  end
+end
