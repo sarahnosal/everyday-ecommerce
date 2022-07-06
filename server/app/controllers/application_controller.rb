@@ -2,10 +2,16 @@ class ApplicationController < ActionController::Base
 
     helper_method :resource, :collection
 
+    skip_before_action :verify_authenticity_token, if: :json_request?
+
     rescue_from ActiveRecord::RecordNotFound do |exception|
         @exception = exception
  
         render :exception
+    end
+
+    rescue_from ActiveRecord::RecordInvalid do
+        render :errors, status: :unprocessable_entity
     end
     
     def new
@@ -24,5 +30,10 @@ class ApplicationController < ActionController::Base
  
     def destroy
         resource.destroy!
+    end
+
+    private
+    def json_request?
+      request.format.json?
     end
 end
